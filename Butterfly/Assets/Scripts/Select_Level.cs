@@ -6,7 +6,7 @@ public class Select_Level : MonoBehaviour
 {
     public void Choose_Level()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(1);
 
     }
     
