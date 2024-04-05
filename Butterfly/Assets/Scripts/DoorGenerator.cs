@@ -27,6 +27,8 @@ public class ObjectSpawner : MonoBehaviour
             // Создаем объект на выбранной точке спавна 
             Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
 
+            spawnPoints.Remove(spawnPoint);
+            objectsToSpawn.Remove(objectToSpawn);
             
         }
 
