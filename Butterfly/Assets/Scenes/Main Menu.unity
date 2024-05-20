@@ -345,7 +345,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1499216615}
         m_TargetAssemblyTypeName: Select_Level, Assembly-CSharp
-        m_MethodName: Choose_Level
+        m_MethodName: Level_selection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

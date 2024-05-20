@@ -4,34 +4,21 @@ using System.Collections.Generic;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public List<GameObject> objectsToSpawn = new List<GameObject>(); // Лист объектов, которые вы хотите спавнить 
-    public List<Transform> spawnPoints = new List<Transform>();     // Лист точек спавна 
-    private void Start()
-    {
-        SpawnRandomObject();
-    }
+    public GameObject[] correctObjects; // Массив правильных объектов
+    public GameObject[] incorrectObjects; // Массив неправильных объектов
 
-    void SpawnRandomObject()
+    void Start()
     {
-        
-        foreach (GameObject obj in objectsToSpawn )
+        // Создаем правильный объект на сцене
+        GameObject correctObject = Instantiate(correctObjects[Random.Range(0, correctObjects.Length)], new Vector3(-6, 0, 0), Quaternion.identity);
+
+        // Выбираем два различных неправильных объекта
+        GameObject incorrectObject1 = Instantiate(incorrectObjects[Random.Range(0, incorrectObjects.Length)], new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject incorrectObject2;
+        do
         {
-            // Выбираем случайную точку спавна 
-             int randomSpawnPointIndex = Random.Range(0, spawnPoints.Count);
-            Transform spawnPoint = spawnPoints[randomSpawnPointIndex];
-
-            // Выбираем случайный объект для спавна 
-             int randomObjectIndex = Random.Range(0, objectsToSpawn.Count);
-            GameObject objectToSpawn = objectsToSpawn[randomObjectIndex];
-
-            // Создаем объект на выбранной точке спавна 
-            Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
-
-            spawnPoints.Remove(spawnPoint);
-            objectsToSpawn.Remove(objectToSpawn);
-            
-        }
+            incorrectObject2 = Instantiate(incorrectObjects[Random.Range(0, incorrectObjects.Length)], new Vector3(6, 0, 0), Quaternion.identity);
+        } while (incorrectObject2 == incorrectObject1); // Проверяем, что второй неправильный объект не равен первому
 
     }
-
 }
